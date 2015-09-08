@@ -30,7 +30,7 @@
 	<div class="row">
 		<div class="col-md-6 col-sm-9 col-xs-12 col-md-offset-3 col-offset-sm-3 col-offset-xs-3">
 			<div class="panel panel-primary">
-				<div class="panel-heading text-center"><span class="icon-lock"></span> Login Cl&iacute;nica dental Oral Plus</div>
+				<div class="panel-heading text-center titulo-login"><span class="icon-lock"></span> Login Cl&iacute;nica dental Oral Plus</div>
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">

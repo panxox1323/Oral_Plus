@@ -18,7 +18,7 @@ class CreateFacturaComprasTable extends Migration {
             $table->integer('id_proveedor')->unsigned();
             $table->foreign('id_proveedor')
                   ->references('id')
-                  ->on('proveedores')
+                  ->on('proveedors')
                   ->onDelete('cascade');
             $table->integer('cantidad');
             $table->integer('valor_unitario');

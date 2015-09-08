@@ -15,8 +15,8 @@ class AdminTableSeeder extends Seeder
         \DB::table('users')->insert(array(
             'first_name'     => 'Francisco',
             'last_name'      => 'Inostroza',
-            'email'          => 'franciscoq',
-            'password'       => \Hash::make('secret'),
+            'email'          => 'francisco.inostroza@virginiogomez.cl',
+            'password'       => bcrypt('123456'),
             'type'           => 'admin'
         ));
 

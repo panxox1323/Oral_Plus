@@ -41,11 +41,12 @@ class EspecialistaController extends Controller {
 	 */
 	public function store(CreateEspecialistaRequest $request)
 	{
-
-		$especialista = new Especialista();
+		$especialista = new Especialista($request->all());
 		$especialista->save();
 
-		return redirect()->route('admin.especialista.index');
+		$message = $especialista->nombres.' '.$especialista->apellidos.' fue creado correctamente';
+		Session::flash('message', $message);
+		return \Redirect::route('admin.especialista.index');
 
 	}
 

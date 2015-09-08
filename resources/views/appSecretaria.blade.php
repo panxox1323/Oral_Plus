@@ -36,20 +36,13 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/admin"><strong>Oral Plus</strong></a>
+				<a class="navbar-brand" href="#">Oral Plus</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="/"><span class="icon-home"></span><strong> Home</strong></a></li>
-                    <li><a href="{{ route('admin.users.index') }}"><span class="icon-user"></span> <strong> Usuarios</strong></a></li>
-                    <li><a href="{{ route('admin.especialistas.index') }}"><span class="icon-health"></span> <strong> Especialistas</strong></a></li>
-                    <li><a href=""><span class="icon-loop2"> <strong> Insumos</strong></span></a></li>
-					<li><a href="{{ route('admin.proveedores.index') }}"><span class="icon-user-tie"></span> <strong> Proveedores</strong></a></li>
-					<li><a href="{{ route('admin.especialidades.index') }}"><span class="icon-addressbook3"></span><strong> Especialidades</strong></a></li>
-					<li><a href=""><span class="icon-calendar2"> <strong> Agendar Consulta</strong></span></a></li>
-					<li><a href=""><span></span><strong>Facturas</strong></a></li>
-					<li><a href="" class="pull-right"><span class=""></span><strong>Perfil</strong></a></li>
+					<li><a href="/"><span class="icon-home"></span> Home</a></li>
+					<li><a href="{{ route('secretaria.users.index') }}"><span class="icon-user"></span> <strong> Usuarios</strong></a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -57,7 +50,7 @@
 						<li><a href="/auth/login">Login</a></li>
 						<!--<li><a href="/auth/register">Registro</a></li>-->
 					@else
-						<li><a></a></li>
+
                         <li><a href="/auth/logout"><span class="icon-sign-out"></span> Cerrar Sesi&oacute;n</a></li>
 
 					@endif

@@ -15,7 +15,7 @@ class EspecialistaTableSeeder extends Seeder
 
         $faker = Faker::create();
 
-        for($i=0; $i<10; $i++){
+        for($i=0; $i<50; $i++){
 
             $id_especialidad=\DB::table('especialidades')->insertGetId(array(
 
@@ -28,12 +28,13 @@ class EspecialistaTableSeeder extends Seeder
                 'run'            => $faker->numberBetween('11111111', '999999999'),
                 'first_name'     => $faker->firstName.' '.$faker->firstName,
                 'last_name'      => $faker->lastName.' '.$faker->lastName,
-                'fecha_nac'      => $faker->dateTimeBetween('-90 years', 'now'),
+                'fecha_nacimiento'      => $faker->dateTimeBetween('-90 years', 'now'),
                 'telefono'       => $faker->numberBetween('11111111', '99999999'),
                 'email'          => $faker->email,
                 'saldo'          => $faker->numberBetween('0', '10000000'),
                 'ciudad'         => $faker->city,
                 'direccion'      => $faker->streetAddress,
+
 
             ));
 
@@ -111,7 +112,7 @@ class EspecialistaTableSeeder extends Seeder
 
             ));
 
-            $id2=\DB::table('proveedores')->insertGetId(array(
+            $id2=\DB::table('proveedors')->insertGetId(array(
 
                 'nombre'      => $faker->name,
                 'direccion'   => $faker->streetAddress,

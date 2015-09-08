@@ -136,6 +136,7 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
         'DaveJamesMiller\Breadcrumbs\ServiceProvider',
+		'Styde\Html\HtmlServiceProvider',
 
 
         /*

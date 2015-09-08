@@ -22,7 +22,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['first_name', 'last_name', 'email', 'password', 'type', 'run', 'telefono'];
+	protected $fillable = ['first_name', 'last_name', 'email', 'password', 'type', 'run', 'telefono', 'direccion', 'fecha_nacimiento', 'ciudad'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -68,7 +68,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         $types = config('options.types');
 
         if ($type != "" && isset($types[$type])) {
-            $query->where('type', '=', $type);
+            $query->where('type', $type);
         }
     }
 

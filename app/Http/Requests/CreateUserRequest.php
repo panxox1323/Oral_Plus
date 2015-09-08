@@ -26,7 +26,7 @@ class CreateUserRequest extends Request {
             'last_name'     => 'required',
             'email'         => 'required|unique:users|email',
             'password'      => 'required|min:6',
-            'type'          => 'required||in:user,admin',
+            'type'          => 'required||in:user,admin,especialista,secretaria',
             'run'           => 'required|min:8',
             'telefono'      => 'required|numeric|min:7'
 		];

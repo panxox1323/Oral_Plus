@@ -22,10 +22,11 @@ class CreateUsersTable extends Migration {
             $table->integer('telefono');
 			$table->string('email')->unique();
             $table->integer('saldo');
+			$table->string('direccion');
+			$table->date('fecha_nacimiento');
+			$table->string('ciudad');
 			$table->string('password', 60);
-            $table->string('ciudad');
-            $table->string('direccion');
-            $table->enum('type', ['admin', 'user','especialista','recepcionista']);
+            $table->enum('type', ['admin', 'user','especialista','secretaria']);
 			$table->rememberToken();
 			$table->timestamps();
 		});

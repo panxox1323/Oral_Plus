@@ -1,23 +1,22 @@
-<?php namespace Oral_Plus\Http\Middleware;
+<?php
+
+namespace Oral_Plus\Http\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Auth\Guard;
 
-class IsAdmin {
-
+class IsEspecialista
+{
     public function __construct(Guard $auth)
     {
         $this->auth = $auth;
     }
 
-
-	public function handle($request, Closure $next)
-	{
-
+    public function handle($request, Closure $next)
+    {
         switch($this->auth->user()->type)
         {
             case 'admin':
-                //return redirect()->to('admin');
+                return redirect()->to('admin');
                 break;
 
             case 'user':
@@ -29,7 +28,7 @@ class IsAdmin {
                 break;
 
             case 'espcialista':
-                return redirect()->to('especialista');
+                //return redirect()->to('especialista');
                 break;
 
             default:
@@ -37,7 +36,6 @@ class IsAdmin {
                 break;
         }
 
-		return $next($request);
-	}
-
+        return $next($request);
+    }
 }

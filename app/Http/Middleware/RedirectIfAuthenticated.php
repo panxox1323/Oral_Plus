@@ -35,7 +35,30 @@ class RedirectIfAuthenticated {
 	{
 		if ($this->auth->check())
 		{
-			return new RedirectResponse(url('/home'));
+			switch($this->auth->user()->type)
+			{
+				case 'admin':
+					return redirect()->to('admin');
+					break;
+
+				case 'user':
+					return redirect()->to('user');
+					break;
+
+				case 'secretaria':
+					return redirect()->to('secretaria');
+					break;
+
+				case 'espcialista':
+					return redirect()->to('especialista');
+					break;
+
+				default:
+					return redirect()->to('auth/login');
+					break;
+			}
+			return redirect('/admin');
+
 		}
 
 		return $next($request);

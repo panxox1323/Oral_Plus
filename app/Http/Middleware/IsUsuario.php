@@ -1,27 +1,26 @@
-<?php namespace Oral_Plus\Http\Middleware;
+<?php
+
+namespace Oral_Plus\Http\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Auth\Guard;
 
-class IsAdmin {
-
+class IsUsuario
+{
     public function __construct(Guard $auth)
     {
         $this->auth = $auth;
     }
 
-
-	public function handle($request, Closure $next)
-	{
-
+    public function handle($request, Closure $next)
+    {
         switch($this->auth->user()->type)
         {
             case 'admin':
-                //return redirect()->to('admin');
+                return redirect()->to('admin');
                 break;
 
             case 'user':
-                return redirect()->to('user');
+                //return redirect()->to('user');
                 break;
 
             case 'secretaria':
@@ -36,8 +35,6 @@ class IsAdmin {
                 return redirect()->to('auth/login');
                 break;
         }
-
-		return $next($request);
-	}
-
+        return $next($request);
+    }
 }
