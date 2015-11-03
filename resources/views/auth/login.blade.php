@@ -7,10 +7,11 @@
     <title>Login Oral Plus</title>
 
 	{!!  Html::style('bower_components/bootstrap/dist/css/bootstrap.css') !!}
-	{!!  Html::style('bower_components/bootstrap-material-design/dist/css/material.min.css') !!}
-	{!!  Html::style('bower_components/bootstrap-material-design/dist/css/ripples.min.css') !!}
-	{!!  Html::style('bower_components/bootstrap-material-design/dist/css/material-fullpalette.min.css') !!}
+	{!!  Html::style('bower_components/bootstrap-material-design/dist/css/material.css') !!}
 	{!!  Html::style('icomoon/style.css') !!}
+	{!!  Html::style('css/backend.css')  !!}
+	{!!  Html::style('icomoon/icomoon/style.css')  !!}
+	{!!  Html::style('css/boton.css') !!}
 
             <!-- Fonts -->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -26,66 +27,70 @@
 </head>
 <body>
 
-<div class="container-fluid navbaar">
+<div class="container">
 	<div class="row">
 		<div class="col-md-6 col-sm-9 col-xs-12 col-md-offset-3 col-offset-sm-3 col-offset-xs-3">
-			<div class="panel panel-primary">
+			<div class="panel panel-primary login ">
 				<div class="panel-heading text-center titulo-login"><span class="icon-lock"></span> Login Cl&iacute;nica dental Oral Plus</div>
-				<div class="panel-body">
-					@if (count($errors) > 0)
-						<div class="alert alert-danger">
-							<strong>Atenci&oacute;n!</strong> Error al logearse.<br><br>
-							<ul>
-								@foreach ($errors->all() as $error)
-									<li>{{ $error }}</li>
-								@endforeach
-							</ul>
-						</div>
-					@endif
 
-					<form class="form-horizontal" role="form" method="POST" action="/auth/login">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-						<div class="form-group">
-							<label class="col-md-4 control-label">{{ trans('validation.attributes.email') }}</label>
-							<div class="col-md-6">
-                                {!! Form::text('email', null, ['class' => 'form-control', 'type' => 'email', 'placeholder' => 'info@123.com']) !!}
-
+				<div class="effect5">
+					<div class="formulario">
+						@if (count($errors) > 0)
+							<div class="alert alert-danger">
+								<strong>Atenci&oacute;n!</strong> Error al logearse.<br><br>
+								<ul>
+									@foreach ($errors->all() as $error)
+										<li>{{ $error }}</li>
+									@endforeach
+								</ul>
 							</div>
-						</div>
+						@endif
 
-						<div class="form-group">
-							<label class="col-md-4 control-label">{{ trans('validation.attributes.password') }}</label>
-							<div class="col-md-6">
-                                {!! Form::password('password', ['class' => 'form-control', 'type' => 'password', 'placeholder' => 'M&iacute;nimo 6 caracteres']) !!}
+						<form class="form-horizontal" role="form" method="POST" action="/auth/login">
+							<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<div class="checkbox">
-									<label>
-										<input type="checkbox" name="remember"> Recordar
-									</label>
+							<div class="form-group">
+								<label class="col-md-4 control-label">{{ trans('validation.attributes.email') }}</label>
+								<div class="col-md-6">
+									{!! Form::text('email', null, ['class' => 'form-control', 'type' => 'email', 'placeholder' => 'info@123.com']) !!}
 								</div>
 							</div>
-						</div>
 
-						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary" style="margin-right: 15px;">
-									Entrar
-								</button>
+							<div class="form-group">
+								<label class="col-md-4 control-label">{{ trans('validation.attributes.password') }}</label>
+								<div class="col-md-6">
+									{!! Form::password('password', ['class' => 'form-control', 'type' => 'password', 'placeholder' => 'M&iacute;nimo 6 caracteres']) !!}
 
-								<a href="/password/email">Olvidaste tu contrase&nacute;a?</a>
+								</div>
 							</div>
-						</div>
-					</form>
+
+							<div class="form-group">
+								<div class="col-md-6 col-md-offset-4">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox" name="remember"> Recordar
+										</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-md-6 col-md-offset-4">
+									<button type="submit" class="btn btn-primary text-center" style="margin-right: 15px;">
+										Entrar
+									</button>
+									<a href="/" class="btn btn-warning"><span class="icon-cancel"></span> Cancelar</a>
+
+								</div>
+							</div>
+						</form>
+					</div>
+
 				</div>
 			</div>
 		</div>
 	</div>
+
 </div>
 {!! Html::script('bower_components/jquery/dist/jquery.min.js') !!}
 {!! Html::script('bower_components/bootstrap/dist/js/bootstrap.min.js') !!}

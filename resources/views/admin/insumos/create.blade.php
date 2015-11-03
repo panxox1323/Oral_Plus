@@ -1,24 +1,29 @@
-@extends('app')
+@extends('layout.admin')
 
 @section('content')
-    <div class="container navbaar">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-primary">
-                    <div class="panel-heading text-capitalize text-center"><h4><strong><span class="icon-circle-with-plus"></span> Nuevo Insumo</strong></h4></div>
 
-                    <div class="panel-body">
+    <div class="panel panel-info">
+        
+        @if(Session::has('message'))
 
-                        @include('admin.partials.message')
+            <p class="alert alert-danger">{{ Session::get('message') }}</p>
+        @else
 
+            <div class="panel-heading text-center"><h5 class="porte"><strong>Crear Insumo</strong></h5></div>
 
-                        {!! Form::open(['route' => 'admin.insumos.store', 'method' => 'POST'  ]) !!}
-                            @include('admin.insumos.partials.fields')
-                            <button type="submit" class="btn btn-success btn-lg"><span class="icon-check"></span> Crear Insumo</button>
-                            @include('admin.insumos.partials.cancelar')
-                        {!! Form::close() !!}
+        @endif
 
+        <div class="panel-body">
+            <div class="container">
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 ajuste3">
+                    {!! Form::open(['route' => 'admin.insumos.store', 'method' => 'POST'  ]) !!}
+                    @include('admin.insumos.partials.fields')
+                    <button type="submit" class="btn btn-success btn-sm pull-left"><span class="icon-check"></span> Crear Insumo</button>
+                    <div class="pull-right">
+                        @include('admin.insumos.partials.cancelar')
                     </div>
+
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>

@@ -10,6 +10,11 @@ class Proveedor extends Model {
 
 
 
+    public function facturas()
+    {
+        return $this->hasMany('Oral_Plus\Factura', 'id', 'id_proveedor');
+    }
+
 
     public function scopeNombre($query, $nombre)
     {

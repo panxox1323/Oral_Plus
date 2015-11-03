@@ -22,13 +22,15 @@ class CreateUserRequest extends Request {
 	public function rules()
 	{
 		return [
-            'first_name'    => 'required',
-            'last_name'     => 'required',
-            'email'         => 'required|unique:users|email',
-            'password'      => 'required|min:6',
-            'type'          => 'required||in:user,admin,especialista,secretaria',
-            'run'           => 'required|min:8',
-            'telefono'      => 'required|numeric|min:7'
+            'first_name'         => 'required',
+            'last_name'          => 'required',
+            'email'              => 'required|unique:users|email',
+            'password'           => 'required|min:6',
+            'type'               => 'required||in:user,admin,especialista,secretaria',
+            'run'                => 'required',
+            'telefono'           => 'required|numeric|min:7',
+			'fecha_nacimiento'   => 'date'
+
 		];
 	}
 

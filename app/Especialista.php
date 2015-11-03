@@ -6,7 +6,7 @@ class Especialista extends Model
 {
 
 
-    protected $file = 'especialidad';
+    protected $file = 'especialista';
 
     protected $nullable = ['run', 'nombres', 'apellidos', 'direccion', 'fecha_nac', 'telefono', 'fecha_contrato', 'titulo', 'id_especialidad'];
 
@@ -21,6 +21,7 @@ class Especialista extends Model
             $query->where(\DB::raw("CONCAT(nombres, ' ', apellidos)"), "LIKE", "%$name%");
         }
     }
+
 
 
     public function scopeType($query, $type)

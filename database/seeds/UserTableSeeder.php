@@ -15,23 +15,7 @@ class UserTableSeeder extends Seeder
 
         $faker = Faker::create();
 
-        for($i=0; $i<100; $i++){
 
-            $id=\DB::table('users')->insertGetId(array(
-                'direccion'      => $faker->streetAddress,
-                'fecha_nac'      => $faker->dateTimeBetween('-90 years','1 years'),
-                'telefono'       => $faker->phoneNumber,
-                'saldo'          => $faker->randomDigit,
-                'ciudad'         => $faker->city,
-                'first_name'     => $faker->firstName ,
-                'last_name'      => $faker->lastName,
-                'email'          => $faker->unique()->email,
-                'password'       => \Hash::make('123456'),
-                'type'           => $faker->randomElement(array('user','admin', 'especialista', 'recepcionista'))
-            ));
-
-
-        }
 
     }
 }

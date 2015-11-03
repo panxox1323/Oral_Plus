@@ -1,10 +1,10 @@
 @if($errors->any())
     <div class="alert alert-danger" role="alert">
 
-        <p>Por favor corrige los siguientes errores:</p>
+        <strong><p class="color">Por favor corrige los siguientes errores:</p></strong>
         <ul>
             @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li class="porte2">{{ $error }}</li>
             @endforeach
         </ul>
 

@@ -17,7 +17,7 @@ class EspecialidadController extends Controller {
 	 */
 	public function index(Request $request)
 	{
-		$especialidades = Especialidad::especialidad($request->get('especialidad'))->orderBy('id', 'DESC')->paginate();
+		$especialidades = Especialidad::especialidad($request->get('especialidad'))->orderBy('id', 'DESC')->paginate(8);
         return view('admin.especialidades.index', compact('especialidades'));
 	}
 
@@ -38,11 +38,11 @@ class EspecialidadController extends Controller {
 	 */
 	public function store(CreateEspecialidadRequest $request)
 	{
-        $especialidad = new Especialidad($request->all());
-        $especialidad->save();
+		$especialidad = Especialidad::create($request->all());
 
-        return redirect()->route('admin.especialidades.index');
-
+		$message = $especialidad->especialidad.' fue creado correctamente';
+		Session::flash('message', $message);
+		return \Redirect::route('admin.especialidades.index');
 	}
 
 	/**
@@ -51,9 +51,9 @@ class EspecialidadController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(CreateEspecialidadRequest $request)
 	{
-		//
+
 	}
 
 	/**
@@ -65,7 +65,7 @@ class EspecialidadController extends Controller {
 	public function edit($id)
 	{
 		$especialidad = Especialidad::findOrFail($id);
-        return view('admin.especialidades.create', compact('especialidad'));
+        return view('admin.especialidades.edit', compact('especialidad'));
 	}
 
 	/**
@@ -89,13 +89,11 @@ class EspecialidadController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(CreateEspecialidadRequest $request,$id)
 	{
-        $especialidad = Especialidad::findOrFail($id);
-        Especialidad::destroy($id);
-        $message = $especialidad->nombre.' fue eliminado de la Base de Datos';
-        Session::flash('message', $message);
-        return redirect()->route('admin.especialidades.index');
+
 	}
+
+
 
 }

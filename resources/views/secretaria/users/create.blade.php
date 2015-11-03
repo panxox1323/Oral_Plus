@@ -1,4 +1,4 @@
-@extends('app')
+@extends('secretaria.layout')
 
 @section('content')
     <div class="container navbaar">
@@ -9,13 +9,13 @@
 
                     <div class="panel-body">
 
-                        @include('admin.partials.message')
+                        @include('secretaria.partials.message')
 
 
-                        {!! Form::open(['route' => 'admin.users.store', 'method' => 'POST',  ]) !!}
-                            @include('admin.users.partials.fields')
+                        {!! Form::open(['route' => 'secretaria.users.store', 'method' => 'POST',  ]) !!}
+                            @include('secretaria.users.partials.fields')
                             <button type="submit" class="btn btn-success btn-lg btn-crear"><span class="icon-user-check"></span> Crear Usuario</button>
-                            @include('admin.users.partials.cancelar')
+                            @include('secretaria.users.partials.cancelar')
                         {!! Form::close() !!}
 
                     </div>

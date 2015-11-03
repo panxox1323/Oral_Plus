@@ -14,9 +14,9 @@
                 <td>{{ $user->email }}</td>
                 <td>{{ trans($user->type) }}</td>
                 <td>
-                    {!! Form::open(['route' => ['admin.users.destroy', $user], 'method' => 'DELETE']) !!}
-                    <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-success" title="Editar usuario" target=""><span class="icon-edit"></span></a>
-                    <a href="{{ route('admin.users.show', $user) }}" class="btn btn-warning" title="Historial cl&iacute;nico" target=""><span class="icon-folder2"></span></a>
+                    {!! Form::open(['route' => ['secretaria.users.destroy', $user], 'method' => 'DELETE']) !!}
+                    <a href="{{ route('secretaria.users.edit', $user) }}" class="btn btn-success" title="Editar usuario" target=""><span class="icon-edit"></span></a>
+                    <a href="{{ route('secretaria.users.show', $user) }}" class="btn btn-warning" title="Historial cl&iacute;nico" target=""><span class="icon-folder2"></span></a>
 
                     <a href="" class="btn btn-primary" title="Pagar Cuenta" target=""><span class="icon-moneybag"></span></a>
                     {!! Form::close() !!}

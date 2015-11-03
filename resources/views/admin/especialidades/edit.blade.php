@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layout.admin')
 
 @section('content')
     <div class="container navbaar">
@@ -12,7 +12,7 @@
 
                         @include('admin.partials.message')
 
-                        {!! Form::model($especialidad, ['route' => ['admin.insumos.update', $especialidad], 'method' => 'PUT' ]) !!}
+                        {!! Form::model($especialidad, ['route' => ['admin.especialidades.update', $especialidad], 'method' => 'PUT' ]) !!}
 
                             @include('admin.especialidades.partials.fields')
 

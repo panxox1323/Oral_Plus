@@ -22,7 +22,7 @@ class insumosController extends Controller {
 	 */
 	public function index(Request $request)
 	{
-        $insumo = Insumo::nombre($request->get('nombre'))->orderBy('id', 'DESC')->paginate();
+        $insumo = Insumo::nombre($request->get('nombre'))->orderBy('id', 'DESC')->paginate(8);
 
         return view('admin.insumos.index', compact('insumo'));
 	}
@@ -46,6 +46,8 @@ class insumosController extends Controller {
 	{
 		$insumo = new Insumo($request->all());
         $insumo->save();
+		$message = $insumo->nombre.' fue creado correctamente';
+		Session::flash('message', $message);
 
         return redirect()->route('admin.insumos.index');
 	}
@@ -84,6 +86,8 @@ class insumosController extends Controller {
         $insumo = Insumo::findOrFail($id);
         $insumo->fill($request->all());
         $insumo->save();
+		$message = $insumo->nombre.' fue modificado correctamente';
+		Session::flash('message', $message);
 
         return redirect()->route('admin.insumos.index');
     }

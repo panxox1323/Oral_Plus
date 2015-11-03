@@ -17,7 +17,7 @@ class ProveedorController extends Controller {
 	 */
 	public function index(Request $request)
 	{
-		$proveedores = Proveedor::nombre($request->get('nombre'))->giro($request->get('giro'))->OrderBy('id', 'DESC')->paginate();
+		$proveedores = Proveedor::nombre($request->get('nombre'))->giro($request->get('giro'))->OrderBy('id', 'DESC')->paginate(7);
 
         return view('admin.proveedores.index', compact('proveedores'));
 	}
@@ -40,6 +40,8 @@ class ProveedorController extends Controller {
 	public function store(CreateProveedorRequest $request)
 	{
         $proveedor = Proveedor::create($request->all());
+		$message = $proveedor->nombre. ' fue creado correctamente';
+		Session::flash('message', $message);
 
         return redirect()->route('admin.proveedores.index');
 	}
@@ -78,6 +80,8 @@ class ProveedorController extends Controller {
         $proveedor = Proveedor::findOrFail($id);
         $proveedor->fill($request->all());
         $proveedor->save();
+		$message = $proveedor->nombre. ' fue modificado correctamente';
+		Session::flash('message', $message);
 
         return redirect()->route('admin.proveedores.index');
 	}

@@ -23,18 +23,7 @@ class CreateEspecialistaTable extends Migration {
             $table->string('telefono');
             $table->date('fecha_contrato');
             $table->string('titulo');
-            $table->integer('id_especialidad')->unsigned();
 
-            $table->foreign('id_especialidad')
-                ->references('id')
-                ->on('especialidades')
-                ->onDelete('cascade');
-            $table->integer('id_turno')->unsigned();
-
-            $table->foreign('id_turno')
-                ->references('id')
-                ->on('turnos')
-                ->onDelete('cascade');
 			$table->timestamps();
 
 		});

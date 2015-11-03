@@ -9,6 +9,13 @@ class Especialidad extends Model {
     protected $fillable = ['especialidad'];
 
 
+    public function user()
+    {
+        return $this->hasMany('Oral_Plus\User', 'id', 'id_especialidad');
+    }
+
+
+
 
     public function scopeEspecialidad($query, $especialidad)
     {

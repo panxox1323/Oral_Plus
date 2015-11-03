@@ -16,8 +16,8 @@ class CreateDetalleComprasTable extends Migration {
 		{
             $table->integer('id_factura')->unsigned();
             $table->foreign('id_factura')
-                  ->references('id')
-                  ->on('factura_compras')
+                  ->references('id_factura')
+                  ->on('factura')
                   ->onDelete('cascade');
             $table->integer('id_insumo')->unsigned();
             $table->foreign('id_insumo')

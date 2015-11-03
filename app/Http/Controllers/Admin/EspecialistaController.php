@@ -8,6 +8,8 @@ use Oral_Plus\Http\Controllers\Controller;
 use Oral_Plus\Http\Requests\CreateEspecialistaRequest;
 
 use Illuminate\Http\Request;
+use Oral_Plus\Http\Requests\CreateUserRequest;
+use Oral_Plus\User;
 
 class EspecialistaController extends Controller {
 
@@ -18,8 +20,7 @@ class EspecialistaController extends Controller {
 	 */
 	public function index(Request $request)
 	{
-		$especialistas = Especialista::name($request->get('name'))->type($request->get('type'))->orderBy('id', 'DESC')->paginate(10);
-
+		$especialistas = User::name($request->get('name'))->filtro($request->get('filtro'))->type($request->get('type'))->orderBy('id', 'DESC')->paginate(8);
 
 		return view('admin.especialista.index', compact('especialistas'));
 	}
@@ -37,16 +38,17 @@ class EspecialistaController extends Controller {
 	/**
 	 * Store a newly created resource in storage.
 	 *
+	 * @param CreateEspecialistaRequest $request
 	 * @return Response
 	 */
 	public function store(CreateEspecialistaRequest $request)
 	{
-		$especialista = new Especialista($request->all());
+		$especialista = new User($request->all());
 		$especialista->save();
 
 		$message = $especialista->nombres.' '.$especialista->apellidos.' fue creado correctamente';
 		Session::flash('message', $message);
-		return \Redirect::route('admin.especialista.index');
+		return \Redirect::route('admin.especialistas.index');
 
 	}
 
@@ -69,7 +71,8 @@ class EspecialistaController extends Controller {
 	 */
 	public function edit($id)
 	{
-
+		$especialistas = User::findOrFail($id);
+		return view('admin.especialista.edit', compact('especialistas'));
 	}
 
 	/**
@@ -78,8 +81,13 @@ class EspecialistaController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, CreateUserRequest $request)
 	{
+		$especialista = User::findOrFail($id);
+		$especialista->fill($request->all());
+		$especialista->save();
+
+		return redirect()->route('admin.especialistas.index');
 
 	}
 
@@ -91,7 +99,7 @@ class EspecialistaController extends Controller {
 	 */
 	public function destroy($id)
 	{
-
+		return '7777';
 	}
 
 }

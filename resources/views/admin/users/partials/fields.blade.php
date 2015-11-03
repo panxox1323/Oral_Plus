@@ -1,40 +1,196 @@
 
-<div class="form-group">
-    <strong>{!! Form::text('first_name', null, ['class' => 'form-control floating-label', 'placeholder' => 'Nombres:'] ) !!}</strong>
+<div class="row">
+    @if(Auth::user()->type === 'admin')
+        <div class="col-sm-6 col-md-6 col-xs-6 form-group">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                {!! Form::label('type', 'Tipo de Usuario', ['class' => '']) !!}
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <strong>{!! Form::select('type',config('opciones.tiposAdmin'),null, ['class' => 'form-control']) !!}</strong>
+            </div>
+        </div>
+    @else
+        <div class="col-sm-6 col-md-6 col-xs-6 form-group">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                {!! Form::label('type', 'Tipo de Usuario', ['class' => '']) !!}
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <strong>{!! Form::select('type',config('opciones.tipoNormal'),null, ['class' => 'form-control', 'id' => 'selector']) !!}</strong>
+            </div>
+
+        </div>
+    @endif
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 form-group" id="Especialidad" style="display: none">
+        <div class="col-sm-12 col-md-12 col-xs-12 form-group">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                {!! Form::label('id_especialidad', 'Especialidad', ['class' => '']) !!}
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <strong>{!! Form::select('id_especialidad', $especialidad, null, ['class' => 'form-control', 'id' => 'selector']) !!}</strong>
+            </div>
+
+        </div>
+    </div>
+
 </div>
 
-<div class="form-group">
-    <strong>{!! Form::text('last_name', null, ['class' => 'form-control floating-label', 'placeholder' => 'Apellidos:'] ) !!}</strong>
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-xs-6 form-group">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            {!! Form::label('first_name', 'Nombres', ['class' => '']) !!}
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+            @if($errors->all('first_name'))
+                <div class="" role="alert">
+                    <strong><p class="porte2 pull-right">{{ $errors->first('first_name') }}</p></strong>
+                </div>
+            @endif
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <strong>{!! Form::text('first_name', null, ['class' => 'form-control'] ) !!}</strong>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-xs-6 form-group">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            {!! Form::label('last_name', 'Apellidos', ['class' => '']) !!}
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+            @if($errors->all())
+                <div class="" role="alert">
+                    <strong><p class="porte2 pull-right">{{ $errors->first('last_name')}}</p></strong>
+                </div>
+            @endif
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <strong>{!! Form::text('last_name', null, ['class' => 'form-control']) !!}</strong>
+        </div>
+    </div>
 </div>
 
-<div class="form-group">
-    <strong>{!! Form::password('password', ['class' => 'form-control floating-label', 'placeholder' => 'Password'] ) !!}</strong>
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-xs-6 form-group">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            {!! Form::label('password', 'Password', ['class' => '']) !!}
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+            @if($errors->all())
+                <div class="" role="alert">
+                    <strong><p class="porte2 pull-right">{{ $errors->first('password')}}</p></strong>
+                </div>
+            @endif
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <strong>{!! Form::password('password', ['class' => 'form-control']) !!}</strong>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-xs-6 form-group">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            {!! Form::label('run', 'RUN', ['class' => '']) !!}
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+            @if($errors->all())
+                <div class="" role="alert">
+                    <strong><p class="porte2 pull-right">{{ $errors->first('run')}}</p></strong>
+                </div>
+            @endif
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <strong>{!! Form::text('run', null, ['class' => 'form-control', 'id' => 'verifica']) !!}</strong>
+        </div>
+    </div>
 </div>
 
-<div class="form-group">
-    <strong>{!! Form::text('run', null, ['class' => 'form-control floating-label', 'placeholder' => 'RUN']) !!}</strong>
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-xs-6 form-group">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            {!! Form::label('direccion', 'Direcci&oacute;n', ['class' => '']) !!}
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <strong>{!! Form::text('direccion', null, ['class' => 'form-control']) !!}</strong>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-xs-6 form-group">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            {!! Form::label('ciudad', 'Ciudad', ['class' => '']) !!}
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <strong>{!! Form::text('ciudad', null,['class' => 'form-control']) !!}</strong>
+        </div>
+    </div>
 </div>
 
-<div class="form-group">
-    <strong>{!! Form::text('direccion', null, ['class' => 'form-control floating-label', 'placeholder' => 'Direccion']) !!}</strong>
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-xs-6 form-group">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            {!! Form::label('fecha_nacimiento', 'Fecha Nacimiento', ['class' => '']) !!}
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            @if($errors->all())
+                <div class="" role="alert">
+                    <strong><p class="porte2 pull-right">{{ $errors->first('fecha_nacimiento')}}</p></strong>
+                </div>
+            @endif
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            {!! Form::text('fecha_nacimiento',null, ['id' => 'datepicker', 'name' => 'datepicker', 'readonly' => 'readonly']) !!}
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-md-6 col-xs-6 form-group">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            {!! Form::label('telefono', 'Tel&eacute;fono', ['class' => '']) !!}
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+            @if($errors->all())
+                <div class="" role="alert">
+                    <strong><p class="porte2 pull-right">{{ $errors->first('telefono')}}</p></strong>
+                </div>
+            @endif
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <strong>{!! Form::text('telefono', null, ['class' => 'form-control']) !!}</strong>
+        </div>
+    </div>
 </div>
 
-<div class="form-group">
-    <strong>{!! Form::text('ciudad', null, ['class' => 'form-control floating-label', 'placeholder' => 'Ciudad']) !!}</strong>
+<div class="row">
+    <div class="col-sm-6 col-md-6 col-xs-6 form-group">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            {!! Form::label('email', 'Correo Electr&oacute;nico', ['class' => '']) !!}
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            @if($errors->all())
+                <div class="" role="alert">
+                    <strong><p class="porte2 pull-right">{{ $errors->first('email')}}</p></strong>
+                </div>
+            @endif
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <strong>{!! Form::text('email',null, ['class' => 'form-control']) !!}</strong>
+        </div>
+
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 form-group">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+            {!! Form::label('estado', 'Estado', ['class' => '']) !!}
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <strong>{!! Form::select('estado',config('opciones.estadoUsuario'),null, ['class' => 'form-control']) !!}</strong>
+        </div>
+        <!-- <div class="slideThree">
+             <input type="checkbox" value="1" id="slideThree" name="estado" checked />
+             <label for="slideThree"></label>
+         </div>
+         -->
+    </div>
+
 </div>
 
-<div class="form-group">
-    {!! Form::date('fecha_nacimiento') !!}
-</div>
 
-<div class="form-group">
-    <strong>{!! Form::text('telefono', null, ['class' => 'form-control floating-label', 'placeholder' => 'Tel&eacute;fono']) !!}</strong>
-</div>
 
-<div class="form-group">
-    <strong>{!! Form::text('email', null, ['class' => 'form-control floating-label', 'placeholder' => 'Correo electr&oacute;nico']) !!}</strong>
-</div>
 
-<div class="form-group">
-    <strong>{!! Form::select('type', config('opciones.tipos'), null, ['class' => 'form-control floating-label', 'placeholder' => 'Tipo de usuario']) !!}</strong>
-</div>

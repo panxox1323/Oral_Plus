@@ -153,6 +153,9 @@ return [
 		'Oral_Plus\Providers\EventServiceProvider',
 		'Oral_Plus\Providers\RouteServiceProvider',
 
+		'HieuLe\Active\ActiveServiceProvider',
+		'Barryvdh\DomPDF\ServiceProvider'
+
 	],
 
 	/*
@@ -204,6 +207,10 @@ return [
         'Form'      => 'Collective\Html\FormFacade',
         'Html'      => 'Collective\Html\HtmlFacade',
         'Breadcrumbs' => 'DaveJamesMiller\Breadcrumbs\Facade',
+
+		'Active' => 'HieuLe\Active\Facades\Active',
+
+		'PDF' => 'Barryvdh\DomPDF\Facade',
 
 	],
 

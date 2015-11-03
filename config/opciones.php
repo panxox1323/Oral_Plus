@@ -6,20 +6,36 @@ return array(
 		''             => 'Todos',
 		'admin'        => 'Administrador',
 		'user'         => 'Usuario',
-		'especialista' => 'Espcialista',
-		'secretaria'   => 'Secretar&iacute;a'
+		'secretaria'   => 'Secretar&iacute;a',
+		'especialista' => 'Especialista'
 
 	],
 
 
 	'tipos' => [
 		''            => '',
-		'admin'       => 'Administrador',
 		'user'        => 'Usuario',
 		'secretaria'  => 'Secretaria',
-		'especialista'=> 'Especialista'
 
-],
+
+	],
+
+	'estadoUsuario' => [
+		'1'      => 'Activo',
+		'0'      => 'Inactivo'
+	],
+
+	'tipoNormal' => [
+		''            => 'Selecione Tipo',
+		'user'        => 'Usuario'
+	],
+
+	'tiposAdmin'  => [
+		'admin'       => 'Administrador',
+		'especialista'=> 'Especialista',
+		'secretaria'  => 'Secretaria',
+		'user'        => 'Usuario',
+	],
 
 	'duracion' =>[
 		''             => 'Seleccione duraci&oacute;n',
@@ -29,6 +45,14 @@ return array(
 		'7'            => '7 Horas',
 		'8'            => '8 Horas',
 
+	],
+
+	'formaPago' =>[
+		''             => 'Selecione Forma de pago',
+		'1'            => 'Efectivo',
+		'2'            => 'Cheque a 30 d&iacute;as',
+		'3'            => 'Cheque a 60 d&iacute;as',
+		'4'            => 'Otro'
 	],
 
 	'ivas' =>[
@@ -57,7 +81,7 @@ return array(
 	],
 
 	'tipoEspecialidad' =>[
-		''               => 'Seleccione Especialidad',
+		''               => '',
 		'1'              => 'Endodoncista',
 		'2'              => 'Ortodoncista',
 		'3'              => 'Odontologo Infantil',

@@ -23,20 +23,7 @@ class EspecialistaTableSeeder extends Seeder
 
             ));
 
-            $id_paciente=\DB::table('users')->insertGetId(array(
 
-                'run'            => $faker->numberBetween('11111111', '999999999'),
-                'first_name'     => $faker->firstName.' '.$faker->firstName,
-                'last_name'      => $faker->lastName.' '.$faker->lastName,
-                'fecha_nacimiento'      => $faker->dateTimeBetween('-90 years', 'now'),
-                'telefono'       => $faker->numberBetween('11111111', '99999999'),
-                'email'          => $faker->email,
-                'saldo'          => $faker->numberBetween('0', '10000000'),
-                'ciudad'         => $faker->city,
-                'direccion'      => $faker->streetAddress,
-
-
-            ));
 
             $id_turnos=\DB::table('turnos')->insertGetId(array(
 
@@ -45,6 +32,23 @@ class EspecialistaTableSeeder extends Seeder
                 'estado'      => $faker->randomElement(array('activo', 'inactivo'))
 
             ));
+
+            $id_Usuario=\DB::table('users')->insertGetId(array(
+                'direccion'      => $faker->streetAddress,
+                'fecha_nac'      => $faker->dateTimeBetween('-90 years','1 years'),
+                'telefono'       => $faker->phoneNumber,
+                'saldo'          => $faker->randomDigit,
+                'ciudad'         => $faker->city,
+                'first_name'     => $faker->firstName ,
+                'id_especialidad'=> $id_especialidad,
+                'id_turno'       => $id_turnos,
+                'last_name'      => $faker->lastName,
+                'email'          => $faker->unique()->email,
+                'password'       => \Hash::make('123456'),
+                'type'           => $faker->randomElement(array('user','admin', 'especialista', 'recepcionista'))
+            ));
+
+
 
             $id_especialista=\DB::table('especialistas')->insertGetId(array(
                 'run'             => $faker->randomDigit,
@@ -55,8 +59,6 @@ class EspecialistaTableSeeder extends Seeder
                 'telefono'        => $faker->randomDigit,
                 'fecha_contrato'  => $faker->date('Y-m-d', 'now' ),
                 'titulo'          => $faker->randomElement(array('ortodoncista', 'endodoncista', 'implantologo', 'cirujano MF')),
-                'id_especialidad' => $id_especialidad,
-                'id_turno'        => $id_turnos,
 
             ));
 
@@ -87,7 +89,7 @@ class EspecialistaTableSeeder extends Seeder
                 'fecha'               => $faker->dateTimeBetween('-1 years', 'now'),
                 'hora'                => $faker->time('H:i:s', 'now'),
                 'estado'              => $faker->randomElement(array('activo', 'inactivo')),
-                'id_paciente'         => $id_paciente,
+                'id_paciente'         => $id_Usuario,
                 'id_especialista'     => $id_especialista,
                 'valor_consulta'      => $faker->numberBetween('10000', '50000'),
                 'id_boleta'           => $id_boleta,
@@ -122,11 +124,9 @@ class EspecialistaTableSeeder extends Seeder
 
             ));
 
-            $id3=\DB::table('factura_compras')->insert(array(
+            $id3=\DB::table('factura')->insert(array(
                 'id_proveedor'     => $id2,
-                'cantidad'         => $faker->numberBetween('1' , '20'),
-                'valor_unitario'   => $faker->numberBetween('1000', '30000'),
-                'fecha_compra'     => $faker->dateTimeBetween('-1 years', 'now'),
+                'fecha'     => $faker->dateTimeBetween('-1 years', 'now'),
                 'forma_pago'       => $faker->randomElement(array('contado', 'cheque a 30 dias', ' cheque a 60 dias')),
             ));
 

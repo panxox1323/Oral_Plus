@@ -10,6 +10,12 @@ class Insumo extends Model {
     protected $fillable = ['nombre', 'precio_unitario', 'descripcion'];
 
 
+    public function detalle_compra()
+    {
+        return $this->hasOne('Oral_Plus\detalle_Compra');
+    }
+
+
     public function scopeNombre($query, $nombre)
     {
         if(trim($nombre) != ""){

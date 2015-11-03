@@ -37,11 +37,16 @@ class EditUserRequest extends Request
 	public function rules()
 	{
 		return[
-            'first_name' => 'required',
-            'last_name'  => 'required',
+
             'email'      => 'required|unique:users,email,'. $this->route->getParameter('users'),
-            'password'   => '',
-            'type'       => 'required|in:user,admin,recepcionista,especialista'
+            'first_name'         => 'required',
+            'last_name'          => 'required',
+            'password'           => '',
+            'type'               => 'required||in:user,admin,especialista,secretaria',
+            'run'                => 'required|min:8',
+            'telefono'           => 'required|numeric|min:7',
+            'fecha_nacimiento'   => 'date'
+
         ];
 	}
 

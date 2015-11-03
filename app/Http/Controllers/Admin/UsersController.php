@@ -2,8 +2,11 @@
 
 
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Support\Facades\View;
+use Oral_Plus\Especialidad;
 use Oral_Plus\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades;
@@ -37,20 +40,23 @@ class UsersController extends Controller
 
 
     public function index(\Illuminate\Http\Request $request)
-    {
-        $users = User::name($request->get('name'))->type($request->get('type'))->orderBy('id', 'DESC')->paginate(10);
+	{
+        $users = User::name($request->get('name'))->type($request->get('type'))->orderBy('id', 'DESC')->paginate(8);
 
         return view('admin.users.index', compact('users'));
 	}
 
-	/**
+   	/**
 	 * Show the form for creating a new resource.
 	 *
 	 * @return Response
 	 */
 	public function create()
 	{
-        return view('admin.users.create');
+		$data =  ['especialidad' => DB::table('especialidades')->lists('especialidad','id')];
+
+
+        return View::make('admin.users.create', $data);
 	}
 
 	/**
@@ -89,7 +95,12 @@ class UsersController extends Controller
 
 	public function edit($id)
 	{
-        return view('admin.users.edit')->with('user', $this->user);
+		$data2 = ['especialidad' => DB::table('especialidades')->lists('especialidad', 'id')];
+
+
+		return View::make('admin.users.edit', $data2)->with('user', $this->user);
+
+
 	}
 
 	/**
@@ -100,16 +111,17 @@ class UsersController extends Controller
 	 */
 	public function update(EditUserRequest $request,$id)
 	{
+		$especialista = User::findOrFail($id);
+		$especialista->fill($request->all());
+		$especialista->save();
 
-        $this->user->fill($request->all());
-
-        $this->user->save();
 
         $message = $this->user->first_name.' '.$this->user->last_name.' fue editado en la Base de Datos';
 
         Session::flash('message', $message);
 
-        return redirect()->route('admin.users.index');
+			return redirect()->route('admin.users.index');
+
 	}
 
 	/**
@@ -120,27 +132,14 @@ class UsersController extends Controller
 	 */
 	public function destroy($id)
 	{
-        $this->user->delete();
-
-        $message = $this->user->full_name.' fue eliminado de la Base de Datos';
-
-        if (\Request::ajax())
-        {
-            return response()->json([
-                'first_name' => $this->user->first_name,
-                'message' => $message
-            ]);
-        }
-
-        Session::flash('message', $message);
-
-        return redirect()->route('admin.users.index');
+        return 'Ok';
 	}
 
-    public function pagar($id)
-    {
-        $user = User::findOrFail($id);
-        return view('admin.users.pagar', compact($user));
-    }
 
+	public function editarPerfil()
+	{
+		//$id = auth()->user()->id;
+		//$user = User::findOrFail($id);
+		return view('admin.users.partials.campos-perfil')->with('user', $this->user);
+	}
 }

@@ -1,7 +1,6 @@
-@extends('app')
+@extends('layout.admin')
 
 @section('content')
-
 
 
 @endsection

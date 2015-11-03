@@ -33,13 +33,13 @@ nav.tm_navbar li a {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     color: #2d2d30;
     font: 20px "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
-    padding: 21px 19px;
+    padding: 21px 24px;
     position: relative;
     text-transform: none;
     transition: all 0.3s ease 0s;
 }
 nav.tm_navbar li.active > a {
-    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    background-color: #D0DBFC;
     color: #99cc00;
 }
 nav.tm_navbar li > a:hover {

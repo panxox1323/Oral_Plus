@@ -1,4 +1,4 @@
-@extends('app')
+@extends('secretaria.layout')
 
 @section('content')
     <div class="container navbaar">
@@ -12,12 +12,12 @@
 
                         @include('admin.partials.message')
 
-                        {!! Form::model($user, ['route' => ['admin.users.update', $user], 'method' => 'PUT' ]) !!}
+                        {!! Form::model($user, ['route' => ['secretaria.users.update', $user], 'method' => 'PUT' ]) !!}
 
-                            @include('admin.users.partials.fields')
+                            @include('secretaria.users.partials.fields')
 
                             <button type="submit" class="btn btn-success"><span class="icon-edit"></span> Editar Usuario</button>
-                            @include('admin.users.partials.cancelar')
+                            @include('secretaria.users.partials.cancelar')
 
 
                         {!! Form::close() !!}

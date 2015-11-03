@@ -40,7 +40,7 @@ class UsersController extends Controller
     {
         $users = User::name($request->get('name'))->type($request->get('type'))->orderBy('id', 'DESC')->paginate(10);
 
-        return view('admin.users.index', compact('users'));
+        return view('secretaria.users.index', compact('users'));
 	}
 
 	/**
@@ -50,7 +50,7 @@ class UsersController extends Controller
 	 */
 	public function create()
 	{
-        return view('admin.users.create');
+        return view('secretaria.users.create');
 	}
 
 	/**
@@ -65,7 +65,7 @@ class UsersController extends Controller
 
         $message = $user->first_name.' '.$user->last_name.' fue creado correctamente';
         Session::flash('message', $message);
-        return \Redirect::route('admin.users.index');
+        return \Redirect::route('secretaria.users.index');
 	}
 
 	/**
@@ -77,7 +77,7 @@ class UsersController extends Controller
 	public function show($id)
 	{
         $users = User::findOrFail($id);
-		return view('admin.users.pagar', compact('users'));
+		return view('secretaria.users.pagar', compact('users'));
 	}
 
 	/**
@@ -89,7 +89,7 @@ class UsersController extends Controller
 
 	public function edit($id)
 	{
-        return view('admin.users.edit')->with('user', $this->user);
+        return view('secretaria.users.edit')->with('user', $this->user);
 	}
 
 	/**
@@ -109,7 +109,7 @@ class UsersController extends Controller
 
         Session::flash('message', $message);
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('secretaria.users.index');
 	}
 
 	/**
@@ -134,13 +134,13 @@ class UsersController extends Controller
 
         Session::flash('message', $message);
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('secretaria.users.index');
 	}
 
     public function pagar($id)
     {
         $user = User::findOrFail($id);
-        return view('admin.users.pagar', compact($user));
+        return view('secretaria.users.pagar', compact($user));
     }
 
 }

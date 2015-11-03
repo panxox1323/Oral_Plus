@@ -1,34 +1,27 @@
-@extends('app')
+@extends('layout.admin')
 
 @section('content')
-    <div class="container navbaar">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-primary">
-                    <div class="panel-heading text-capitalize text-center">Editar Insumo {{ $insumo->nombre }}</div>
+    <div class="panel panel-info">
+        <div class="panel-heading text-capitalize text-center"><h5 class="porte"><span class="icon-pencil2"></span> Editar Insumo {{ $insumo->nombre }}</h5></div>
+        @include('admin.partials.mensaje')
 
+        <div class="panel-body">
+            <div class="container">
+                <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 ajuste3">
+                    {!! Form::model($insumo, ['route' => ['admin.insumos.update', $insumo], 'method' => 'PUT' ]) !!}
 
-                    <div class="panel-body">
+                        @include('admin.insumos.partials.fields')
 
-                        @include('admin.partials.message')
-
-                        {!! Form::model($insumo, ['route' => ['admin.insumos.update', $insumo], 'method' => 'PUT' ]) !!}
-
-                            @include('admin.insumos.partials.fields')
-
-                            <button type="submit" class="btn btn-success btn-lg"><span class="icon-edit"></span> Editar Insumo</button>
+                        <button type="submit" class="btn btn-success pull-left"><span class="icon-pencil2"></span> Editar Insumo</button>
+                        <div class="pull-right">
                             @include('admin.insumos.partials.cancelar')
+                        </div>
 
+                    {!! Form::close() !!}
 
-                        {!! Form::close() !!}
-                        <hr>
-                        @include('admin.insumos.partials.delete')
-
-
-                    </div>
                 </div>
-
             </div>
         </div>
     </div>
+
 @endsection

@@ -11,7 +11,7 @@ class CreateEspecialidadRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return false;
+		return true;
 	}
 
 	/**
@@ -22,7 +22,7 @@ class CreateEspecialidadRequest extends Request {
 	public function rules()
 	{
 		return [
-			'especialidad'    => 'required|unique',
+			'especialidad'    => 'required|unique:especialidades',
 		];
 	}
 

@@ -1,4 +1,4 @@
-@extends('appSecretaria')
+@extends('layout')
 
 @section('content')
 

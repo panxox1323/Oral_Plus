@@ -29,7 +29,9 @@
         "Oral_Plus\\Providers\\BusServiceProvider",
         "Oral_Plus\\Providers\\ConfigServiceProvider",
         "Oral_Plus\\Providers\\EventServiceProvider",
-        "Oral_Plus\\Providers\\RouteServiceProvider"
+        "Oral_Plus\\Providers\\RouteServiceProvider",
+        "HieuLe\\Active\\ActiveServiceProvider",
+        "Barryvdh\\DomPDF\\ServiceProvider"
     ],
     "eager": [
         "Illuminate\\Auth\\AuthServiceProvider",
@@ -49,7 +51,9 @@
         "Oral_Plus\\Providers\\BusServiceProvider",
         "Oral_Plus\\Providers\\ConfigServiceProvider",
         "Oral_Plus\\Providers\\EventServiceProvider",
-        "Oral_Plus\\Providers\\RouteServiceProvider"
+        "Oral_Plus\\Providers\\RouteServiceProvider",
+        "HieuLe\\Active\\ActiveServiceProvider",
+        "Barryvdh\\DomPDF\\ServiceProvider"
     ],
     "deferred": {
         "command.app.name": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
@@ -76,6 +80,7 @@
         "command.route.clear": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
         "command.route.list": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
         "command.serve": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
+        "command.test.make": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
         "command.tinker": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
         "command.up": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",
         "command.vendor.publish": "Illuminate\\Foundation\\Providers\\ArtisanServiceProvider",

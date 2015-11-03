@@ -9,4 +9,10 @@ class Turno extends Model {
 
     protected $fillable = ['tipo','duracion','estado'];
 
+
+    public function user()
+    {
+        return $this->hasOne('Oral_Plus\User');
+    }
+
 }
